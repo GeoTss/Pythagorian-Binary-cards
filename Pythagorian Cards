@@ -1,0 +1,91 @@
+//This program is a math trick that works only with natural positive numbers and based on your answers can guess the number you had thought.
+//In more detail the program will produce a card and then will ask you if the number you have thought of exists in that card and this will go on while the first number
+//(or base number in the code) is less than the boundary you have set.
+//If the number you have thought of exists in the card the program will take the first number(or base number in code) in a vector and in the end will add them up.
+//This program is based on binary numbers but this program works differently with the exact same result with a triple math function.
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
+void find_number(unsigned int sum, vector<unsigned int> base_nums) {
+	cout << "\n\nYour number is: ";
+	for (unsigned int i : base_num)
+		sum += i;
+	cout << sum;
+}
+//Finds the number they had thought based on their answers 
+
+void ask(char choice, unsigned int base_number, vector<unsigned int>& base_nums) {
+	cout << "\n\nWas your number in that card(y/n): ";
+	cin >> choice;
+	if (choice == 'y')
+		base_nums.push_back(base_number);
+	else
+		cout << "Ok.";
+	cout << "\n\n";
+}
+//Asks user if the number they have thought is in the card above
+
+void display_numbers(unsigned int number, int &j) {
+	if (j < 18) {
+		cout << number << " ";
+		j++;
+	}
+	else {
+		cout << number << "\n";
+		j = 0;
+	}
+}
+//Displays the numbers with a specific way
+
+
+unsigned int find_difference(unsigned int base_number, unsigned int& dif, unsigned int& i) {
+	if (i < base_number) {
+		dif = 1;
+	}
+	else if (i == base_number) {
+		dif = base_number + 1;
+		i = 0;
+	}
+	return dif;
+}
+//Finds the difference
+
+
+int main()
+{
+	unsigned int n{ 1 }, boundary{}, dif{}, number{}, sum{}, base_number{ 1 }, i{};
+	int j{};
+	char choice{};
+	vector<unsigned int> base_nums{};
+
+	cout << "\tWelcome to the binary paintings.\n\n\n";
+	cout << "Enter the boundary of the paintings: ";
+	cin >> boundary;
+	cout << "Here are your cards between 1 and " << boundary << "\n\n";
+
+	for (base_number; base_number < boundary; base_number *= 2) {
+
+		number = base_number - 1;
+		i = 0;
+		j = 0;
+
+		while (number <= boundary) {
+			
+			find_difference(base_number, dif, i);
+
+			number += dif;
+
+			if (number <= boundary) { //Checks when to display the numbers else there might be an extra number > boundary
+				display_numbers(number, j);
+			}
+			i++;
+		}
+		ask(choice, base_number, base_num);
+	}
+	find_number(sum, base_nums);
+
+	return 0;
+}
