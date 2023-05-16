@@ -2,7 +2,7 @@
 //In more detail the program will produce a card and then will ask you if the number you have thought of exists in that card and this will go on while the first number
 //(or base number in the code) is less than the boundary you have set.
 //If the number you have thought of exists in the card the program will take the first number(or base number in code) in a vector and in the end will add them up.
-//This program is based on binary numbers but this program works differently with the exact same result with a triple math function.
+//This program is based on binary numbers but this program works differently with the exact same result with a triple math function
 
 #include <iostream>
 #include <vector>
